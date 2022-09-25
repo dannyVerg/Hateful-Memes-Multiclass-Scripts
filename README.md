@@ -12,10 +12,10 @@
  **4. Download 8 trained models for "Protected Categories" unit**
  --> https://drive.google.com/drive/folders/1ImGcveePx-yFOP2ugePxZ1R_jDkIjNAj?usp=sharing
  
- **5. 20models_cat:** foulder with predictions results in csv format for Ensemble of Twenty Models for the “Protected Category” Unit
+ **5. 20models_cat:** foulder with predictions results in csv and log files format for Ensemble of Twenty Models for the “Protected Category” Unit
  
- **6. 27models_type:** foulder with predictions results in csv format for Ensemble of 27 Models for the “Hate Speech Type” Unit
+ **6. 27models_type:** foulder with predictions results in csv format and log files for Ensemble of 27 Models for the “Hate Speech Type” Unit
  
- **7. 8models_cat:** foulder with predictions results in csv format for Unimodal Modals for the “Protected Category” Unit
+ **7. 8models_cat:** foulder with predictions results in csv format and log files for Unimodal Modals for the “Protected Category” Unit
  
- **8. 8models_type:** foulder with predictions results in csv format for Unimodal Modals for the “Hate Speech Type” Unit
+ **8. 8models_type:** foulder with predictions results in csv format and log files for Unimodal Modals for the “Hate Speech Type” Unit
