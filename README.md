@@ -6,3 +6,6 @@
  
  **End to End Process for training and making prediction for Vision-Only Image-Grid**
  --> https://colab.research.google.com/drive/1MI2q2-TaD9f4feUILWdUeZMQX3qJ7RmT
+ 
+ **Download 8 trained models for "Protected Categories" unit**
+ --> https://drive.google.com/drive/folders/1ImGcveePx-yFOP2ugePxZ1R_jDkIjNAj?usp=sharing
