@@ -19,3 +19,15 @@
  **7. 8models_cat:** foulder with predictions results in csv format and log files for Unimodal Modals for the “Protected Category” Unit
  
  **8. 8models_type:** foulder with predictions results in csv format and log files for Unimodal Modals for the “Hate Speech Type” Unit
+ 
+ **9. Multiclass Data Preprocessing:** The script where newly labeled multiclass "Hatefull Memes" Dataset haven customzied to fit the multiclass framework. The Main contents of this scipt are: 
+ - function to convert csv file to jsonl file,
+ - Combining the classes (for more details see chapter of the thesis 3.2.),
+ - Dataset split in training, evaluation and test sets.
+ 
+ **10. Multiclass Evaluation Metrics:** The scipt where the Confusion Matrices and F1-Score have been implemented and computed to evalaute the multiclass classifier for both units
+
+ **11. Unimodal Evalaution Metrics:** The script where the Confusion Matrices and F1-Score have been implemented and computed to evalaute the unimodal models 
+ 
+ **12. Unimodals Datasets Preprocessing:** The script where multiclass labeled dataset is splitted to fit the definition of the binary problems (for more details see chapter of the thesis 3.4.)
+ 
