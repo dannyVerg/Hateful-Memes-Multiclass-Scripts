@@ -40,5 +40,5 @@ To train and make predictions run all cells. The models will be saved in "hate_t
 
  **11. Unimodal Evalaution Metrics:** This scipt features the implementation of Confusion Matrices and F1-Score and computations to evalaute the unimodal models.
  
- **12. Unimodals Datasets Preprocessing:** This is the script where the multiclass labeled dataset is split to fit the definition of the binary problems (see chapter of the thesis 3.4.)
+ **12. Unimodals Datasets Preprocessing:** This is the script where the multiclass labeled dataset is split to fit the definition of the binary problems (see chapter of the thesis 3.4.).
  
