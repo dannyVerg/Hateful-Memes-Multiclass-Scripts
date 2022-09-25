@@ -1,13 +1,21 @@
 **STRUCTURE OVERVIEW OF THIS REPOSITORY**
 
+In the following Jupiter Notebooks no actions required. You can just run all cells, then the models will be first trained and after thaht the predictions will be made 
+
 **1. End to End Process for training and making prediction for multimodal classifier**
 --> https://colab.research.google.com/drive/1KOcK7pEm8So9VaGdTp2lnAB58MAM9A9F#scrollTo=4Nrs8gl47RvV
+
+The default unit is "Hate Speech Type". Hovewer, "Protected Categories" can bee selected by changing the "unit_type" variable 
 
 **2. End to End Process for training and making prediction for Unimodal Text-Only BERT**
  --> https://colab.research.google.com/drive/1Lc4G7w14x8W62dF4SiFVigTnTInk-PUn#scrollTo=gTUjwxmHGxVm
  
+To train and make predictions run all cells. The models will be saved in "hate_type" folder for "Hate Speech Type" unit or "cat" folder "Protected Categories" unit. Predictions will be saved at "hate_type/preds" and "cat/preds".
+ 
  **3. End to End Process for training and making prediction for Vision-Only Image-Grid**
  --> https://colab.research.google.com/drive/1MI2q2-TaD9f4feUILWdUeZMQX3qJ7RmT
+ 
+ To train and make predictions run all cells. The models will be saved in "hate_type" folder for "Hate Speech Type" unit or "cat" folder "Protected Categories" unit. Predictions will be saved at "hate_type/preds" and "cat/preds".
  
  **4. Download 8 trained models for "Protected Categories" unit**
  --> https://drive.google.com/drive/folders/1ImGcveePx-yFOP2ugePxZ1R_jDkIjNAj?usp=sharing
