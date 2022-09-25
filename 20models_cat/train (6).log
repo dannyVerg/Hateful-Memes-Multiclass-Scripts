@@ -1,0 +1,868 @@
+2022-08-31T17:17:22 | INFO | mmf : Logging to: ./15/train.log
+2022-08-31T17:17:22 | INFO | mmf_cli.run : Namespace(config_override=None, local_rank=None, opts=['config=/content/mmf/mmf/projects/visual_bert/configs/hateful_memes/from_coco_cat.yaml', 'model=visual_bert', 'dataset=hateful_memes', 'run_type=train_val', 'checkpoint.max_to_keep=1', 'checkpoint.resume_zoo=visual_bert.pretrained.cc.full', 'training.tensorboard=True', 'training.checkpoint_interval=50', 'training.evaluation_interval=50', 'training.max_updates=1000', 'training.log_interval=100', 'dataset_config.hateful_memes.max_features=100', 'dataset_config.hateful_memes.annotations.train[0]=/root/.cache/torch/mmf/data/datasets/hateful_memes/defaults/annotations/train_cat.jsonl', 'dataset_config.hateful_memes.annotations.val[0]=/root/.cache/torch/mmf/data/datasets/hateful_memes/defaults/annotations/dev_unseen_cat.jsonl', 'dataset_config.hateful_memes.annotations.test[0]=/root/.cache/torch/mmf/data/datasets/hateful_memes/defaults/annotations/test_unseen_cat.jsonl', 'dataset_config.hateful_memes.features.train[0]=/content/features/feats_hm', 'dataset_config.hateful_memes.features.val[0]=/content/features/feats_hm', 'dataset_config.hateful_memes.features.test[0]=/content/features/feats_hm', 'training.lr_ratio=0.3', 'training.use_warmup=True', 'training.warmup_factor=0.3', 'training.warmup_iterations=500', 'optimizer.params.lr=5.0e-05', 'training.batch_size=32', 'scheduler.params.num_warmup_steps=500', 'scheduler.type=warmup_linear', 'scheduler.params.num_training_steps=1000', 'env.tensorboard_logdir=logs/fit/15', 'env.save_dir=./15'])
+2022-08-31T17:17:22 | INFO | mmf_cli.run : Torch version: 1.6.0+cu92
+2022-08-31T17:17:22 | INFO | mmf.utils.general : CUDA Device 0 is: Tesla P100-PCIE-16GB
+2022-08-31T17:17:22 | INFO | mmf_cli.run : Using seed 23013511
+2022-08-31T17:17:22 | INFO | mmf.trainers.mmf_trainer : Loading datasets
+2022-08-31T17:17:28 | INFO | mmf.trainers.mmf_trainer : Loading model
+2022-08-31T17:17:37 | INFO | mmf.trainers.mmf_trainer : Loading optimizer
+2022-08-31T17:17:37 | INFO | mmf.trainers.mmf_trainer : Loading metrics
+2022-08-31T17:17:37 | INFO | mmf.utils.checkpoint : Loading checkpoint
+2022-08-31T17:17:41 | WARNING | mmf : Key data_parallel is not present in registry, returning default value of None
+2022-08-31T17:17:41 | WARNING | mmf : Key distributed is not present in registry, returning default value of None
+2022-08-31T17:17:41 | WARNING | mmf : Key data_parallel is not present in registry, returning default value of None
+2022-08-31T17:17:41 | WARNING | mmf : Key distributed is not present in registry, returning default value of None
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.embeddings.word_embeddings.weight from model.bert.embeddings.word_embeddings.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.embeddings.position_embeddings.weight from model.bert.embeddings.position_embeddings.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.embeddings.token_type_embeddings.weight from model.bert.embeddings.token_type_embeddings.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.embeddings.LayerNorm.weight from model.bert.embeddings.LayerNorm.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.embeddings.LayerNorm.bias from model.bert.embeddings.LayerNorm.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.embeddings.token_type_embeddings_visual.weight from model.bert.embeddings.token_type_embeddings_visual.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.embeddings.position_embeddings_visual.weight from model.bert.embeddings.position_embeddings_visual.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.embeddings.projection.weight from model.bert.embeddings.projection.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.embeddings.projection.bias from model.bert.embeddings.projection.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.0.attention.self.query.weight from model.bert.encoder.layer.0.attention.self.query.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.0.attention.self.query.bias from model.bert.encoder.layer.0.attention.self.query.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.0.attention.self.key.weight from model.bert.encoder.layer.0.attention.self.key.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.0.attention.self.key.bias from model.bert.encoder.layer.0.attention.self.key.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.0.attention.self.value.weight from model.bert.encoder.layer.0.attention.self.value.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.0.attention.self.value.bias from model.bert.encoder.layer.0.attention.self.value.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.0.attention.output.dense.weight from model.bert.encoder.layer.0.attention.output.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.0.attention.output.dense.bias from model.bert.encoder.layer.0.attention.output.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.0.attention.output.LayerNorm.weight from model.bert.encoder.layer.0.attention.output.LayerNorm.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.0.attention.output.LayerNorm.bias from model.bert.encoder.layer.0.attention.output.LayerNorm.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.0.intermediate.dense.weight from model.bert.encoder.layer.0.intermediate.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.0.intermediate.dense.bias from model.bert.encoder.layer.0.intermediate.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.0.output.dense.weight from model.bert.encoder.layer.0.output.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.0.output.dense.bias from model.bert.encoder.layer.0.output.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.0.output.LayerNorm.weight from model.bert.encoder.layer.0.output.LayerNorm.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.0.output.LayerNorm.bias from model.bert.encoder.layer.0.output.LayerNorm.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.1.attention.self.query.weight from model.bert.encoder.layer.1.attention.self.query.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.1.attention.self.query.bias from model.bert.encoder.layer.1.attention.self.query.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.1.attention.self.key.weight from model.bert.encoder.layer.1.attention.self.key.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.1.attention.self.key.bias from model.bert.encoder.layer.1.attention.self.key.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.1.attention.self.value.weight from model.bert.encoder.layer.1.attention.self.value.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.1.attention.self.value.bias from model.bert.encoder.layer.1.attention.self.value.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.1.attention.output.dense.weight from model.bert.encoder.layer.1.attention.output.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.1.attention.output.dense.bias from model.bert.encoder.layer.1.attention.output.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.1.attention.output.LayerNorm.weight from model.bert.encoder.layer.1.attention.output.LayerNorm.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.1.attention.output.LayerNorm.bias from model.bert.encoder.layer.1.attention.output.LayerNorm.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.1.intermediate.dense.weight from model.bert.encoder.layer.1.intermediate.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.1.intermediate.dense.bias from model.bert.encoder.layer.1.intermediate.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.1.output.dense.weight from model.bert.encoder.layer.1.output.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.1.output.dense.bias from model.bert.encoder.layer.1.output.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.1.output.LayerNorm.weight from model.bert.encoder.layer.1.output.LayerNorm.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.1.output.LayerNorm.bias from model.bert.encoder.layer.1.output.LayerNorm.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.2.attention.self.query.weight from model.bert.encoder.layer.2.attention.self.query.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.2.attention.self.query.bias from model.bert.encoder.layer.2.attention.self.query.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.2.attention.self.key.weight from model.bert.encoder.layer.2.attention.self.key.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.2.attention.self.key.bias from model.bert.encoder.layer.2.attention.self.key.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.2.attention.self.value.weight from model.bert.encoder.layer.2.attention.self.value.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.2.attention.self.value.bias from model.bert.encoder.layer.2.attention.self.value.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.2.attention.output.dense.weight from model.bert.encoder.layer.2.attention.output.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.2.attention.output.dense.bias from model.bert.encoder.layer.2.attention.output.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.2.attention.output.LayerNorm.weight from model.bert.encoder.layer.2.attention.output.LayerNorm.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.2.attention.output.LayerNorm.bias from model.bert.encoder.layer.2.attention.output.LayerNorm.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.2.intermediate.dense.weight from model.bert.encoder.layer.2.intermediate.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.2.intermediate.dense.bias from model.bert.encoder.layer.2.intermediate.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.2.output.dense.weight from model.bert.encoder.layer.2.output.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.2.output.dense.bias from model.bert.encoder.layer.2.output.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.2.output.LayerNorm.weight from model.bert.encoder.layer.2.output.LayerNorm.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.2.output.LayerNorm.bias from model.bert.encoder.layer.2.output.LayerNorm.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.3.attention.self.query.weight from model.bert.encoder.layer.3.attention.self.query.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.3.attention.self.query.bias from model.bert.encoder.layer.3.attention.self.query.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.3.attention.self.key.weight from model.bert.encoder.layer.3.attention.self.key.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.3.attention.self.key.bias from model.bert.encoder.layer.3.attention.self.key.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.3.attention.self.value.weight from model.bert.encoder.layer.3.attention.self.value.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.3.attention.self.value.bias from model.bert.encoder.layer.3.attention.self.value.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.3.attention.output.dense.weight from model.bert.encoder.layer.3.attention.output.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.3.attention.output.dense.bias from model.bert.encoder.layer.3.attention.output.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.3.attention.output.LayerNorm.weight from model.bert.encoder.layer.3.attention.output.LayerNorm.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.3.attention.output.LayerNorm.bias from model.bert.encoder.layer.3.attention.output.LayerNorm.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.3.intermediate.dense.weight from model.bert.encoder.layer.3.intermediate.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.3.intermediate.dense.bias from model.bert.encoder.layer.3.intermediate.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.3.output.dense.weight from model.bert.encoder.layer.3.output.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.3.output.dense.bias from model.bert.encoder.layer.3.output.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.3.output.LayerNorm.weight from model.bert.encoder.layer.3.output.LayerNorm.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.3.output.LayerNorm.bias from model.bert.encoder.layer.3.output.LayerNorm.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.4.attention.self.query.weight from model.bert.encoder.layer.4.attention.self.query.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.4.attention.self.query.bias from model.bert.encoder.layer.4.attention.self.query.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.4.attention.self.key.weight from model.bert.encoder.layer.4.attention.self.key.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.4.attention.self.key.bias from model.bert.encoder.layer.4.attention.self.key.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.4.attention.self.value.weight from model.bert.encoder.layer.4.attention.self.value.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.4.attention.self.value.bias from model.bert.encoder.layer.4.attention.self.value.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.4.attention.output.dense.weight from model.bert.encoder.layer.4.attention.output.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.4.attention.output.dense.bias from model.bert.encoder.layer.4.attention.output.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.4.attention.output.LayerNorm.weight from model.bert.encoder.layer.4.attention.output.LayerNorm.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.4.attention.output.LayerNorm.bias from model.bert.encoder.layer.4.attention.output.LayerNorm.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.4.intermediate.dense.weight from model.bert.encoder.layer.4.intermediate.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.4.intermediate.dense.bias from model.bert.encoder.layer.4.intermediate.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.4.output.dense.weight from model.bert.encoder.layer.4.output.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.4.output.dense.bias from model.bert.encoder.layer.4.output.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.4.output.LayerNorm.weight from model.bert.encoder.layer.4.output.LayerNorm.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.4.output.LayerNorm.bias from model.bert.encoder.layer.4.output.LayerNorm.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.5.attention.self.query.weight from model.bert.encoder.layer.5.attention.self.query.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.5.attention.self.query.bias from model.bert.encoder.layer.5.attention.self.query.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.5.attention.self.key.weight from model.bert.encoder.layer.5.attention.self.key.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.5.attention.self.key.bias from model.bert.encoder.layer.5.attention.self.key.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.5.attention.self.value.weight from model.bert.encoder.layer.5.attention.self.value.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.5.attention.self.value.bias from model.bert.encoder.layer.5.attention.self.value.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.5.attention.output.dense.weight from model.bert.encoder.layer.5.attention.output.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.5.attention.output.dense.bias from model.bert.encoder.layer.5.attention.output.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.5.attention.output.LayerNorm.weight from model.bert.encoder.layer.5.attention.output.LayerNorm.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.5.attention.output.LayerNorm.bias from model.bert.encoder.layer.5.attention.output.LayerNorm.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.5.intermediate.dense.weight from model.bert.encoder.layer.5.intermediate.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.5.intermediate.dense.bias from model.bert.encoder.layer.5.intermediate.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.5.output.dense.weight from model.bert.encoder.layer.5.output.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.5.output.dense.bias from model.bert.encoder.layer.5.output.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.5.output.LayerNorm.weight from model.bert.encoder.layer.5.output.LayerNorm.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.5.output.LayerNorm.bias from model.bert.encoder.layer.5.output.LayerNorm.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.6.attention.self.query.weight from model.bert.encoder.layer.6.attention.self.query.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.6.attention.self.query.bias from model.bert.encoder.layer.6.attention.self.query.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.6.attention.self.key.weight from model.bert.encoder.layer.6.attention.self.key.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.6.attention.self.key.bias from model.bert.encoder.layer.6.attention.self.key.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.6.attention.self.value.weight from model.bert.encoder.layer.6.attention.self.value.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.6.attention.self.value.bias from model.bert.encoder.layer.6.attention.self.value.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.6.attention.output.dense.weight from model.bert.encoder.layer.6.attention.output.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.6.attention.output.dense.bias from model.bert.encoder.layer.6.attention.output.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.6.attention.output.LayerNorm.weight from model.bert.encoder.layer.6.attention.output.LayerNorm.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.6.attention.output.LayerNorm.bias from model.bert.encoder.layer.6.attention.output.LayerNorm.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.6.intermediate.dense.weight from model.bert.encoder.layer.6.intermediate.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.6.intermediate.dense.bias from model.bert.encoder.layer.6.intermediate.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.6.output.dense.weight from model.bert.encoder.layer.6.output.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.6.output.dense.bias from model.bert.encoder.layer.6.output.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.6.output.LayerNorm.weight from model.bert.encoder.layer.6.output.LayerNorm.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.6.output.LayerNorm.bias from model.bert.encoder.layer.6.output.LayerNorm.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.7.attention.self.query.weight from model.bert.encoder.layer.7.attention.self.query.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.7.attention.self.query.bias from model.bert.encoder.layer.7.attention.self.query.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.7.attention.self.key.weight from model.bert.encoder.layer.7.attention.self.key.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.7.attention.self.key.bias from model.bert.encoder.layer.7.attention.self.key.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.7.attention.self.value.weight from model.bert.encoder.layer.7.attention.self.value.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.7.attention.self.value.bias from model.bert.encoder.layer.7.attention.self.value.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.7.attention.output.dense.weight from model.bert.encoder.layer.7.attention.output.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.7.attention.output.dense.bias from model.bert.encoder.layer.7.attention.output.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.7.attention.output.LayerNorm.weight from model.bert.encoder.layer.7.attention.output.LayerNorm.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.7.attention.output.LayerNorm.bias from model.bert.encoder.layer.7.attention.output.LayerNorm.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.7.intermediate.dense.weight from model.bert.encoder.layer.7.intermediate.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.7.intermediate.dense.bias from model.bert.encoder.layer.7.intermediate.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.7.output.dense.weight from model.bert.encoder.layer.7.output.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.7.output.dense.bias from model.bert.encoder.layer.7.output.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.7.output.LayerNorm.weight from model.bert.encoder.layer.7.output.LayerNorm.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.7.output.LayerNorm.bias from model.bert.encoder.layer.7.output.LayerNorm.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.8.attention.self.query.weight from model.bert.encoder.layer.8.attention.self.query.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.8.attention.self.query.bias from model.bert.encoder.layer.8.attention.self.query.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.8.attention.self.key.weight from model.bert.encoder.layer.8.attention.self.key.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.8.attention.self.key.bias from model.bert.encoder.layer.8.attention.self.key.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.8.attention.self.value.weight from model.bert.encoder.layer.8.attention.self.value.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.8.attention.self.value.bias from model.bert.encoder.layer.8.attention.self.value.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.8.attention.output.dense.weight from model.bert.encoder.layer.8.attention.output.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.8.attention.output.dense.bias from model.bert.encoder.layer.8.attention.output.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.8.attention.output.LayerNorm.weight from model.bert.encoder.layer.8.attention.output.LayerNorm.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.8.attention.output.LayerNorm.bias from model.bert.encoder.layer.8.attention.output.LayerNorm.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.8.intermediate.dense.weight from model.bert.encoder.layer.8.intermediate.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.8.intermediate.dense.bias from model.bert.encoder.layer.8.intermediate.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.8.output.dense.weight from model.bert.encoder.layer.8.output.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.8.output.dense.bias from model.bert.encoder.layer.8.output.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.8.output.LayerNorm.weight from model.bert.encoder.layer.8.output.LayerNorm.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.8.output.LayerNorm.bias from model.bert.encoder.layer.8.output.LayerNorm.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.9.attention.self.query.weight from model.bert.encoder.layer.9.attention.self.query.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.9.attention.self.query.bias from model.bert.encoder.layer.9.attention.self.query.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.9.attention.self.key.weight from model.bert.encoder.layer.9.attention.self.key.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.9.attention.self.key.bias from model.bert.encoder.layer.9.attention.self.key.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.9.attention.self.value.weight from model.bert.encoder.layer.9.attention.self.value.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.9.attention.self.value.bias from model.bert.encoder.layer.9.attention.self.value.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.9.attention.output.dense.weight from model.bert.encoder.layer.9.attention.output.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.9.attention.output.dense.bias from model.bert.encoder.layer.9.attention.output.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.9.attention.output.LayerNorm.weight from model.bert.encoder.layer.9.attention.output.LayerNorm.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.9.attention.output.LayerNorm.bias from model.bert.encoder.layer.9.attention.output.LayerNorm.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.9.intermediate.dense.weight from model.bert.encoder.layer.9.intermediate.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.9.intermediate.dense.bias from model.bert.encoder.layer.9.intermediate.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.9.output.dense.weight from model.bert.encoder.layer.9.output.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.9.output.dense.bias from model.bert.encoder.layer.9.output.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.9.output.LayerNorm.weight from model.bert.encoder.layer.9.output.LayerNorm.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.9.output.LayerNorm.bias from model.bert.encoder.layer.9.output.LayerNorm.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.10.attention.self.query.weight from model.bert.encoder.layer.10.attention.self.query.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.10.attention.self.query.bias from model.bert.encoder.layer.10.attention.self.query.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.10.attention.self.key.weight from model.bert.encoder.layer.10.attention.self.key.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.10.attention.self.key.bias from model.bert.encoder.layer.10.attention.self.key.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.10.attention.self.value.weight from model.bert.encoder.layer.10.attention.self.value.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.10.attention.self.value.bias from model.bert.encoder.layer.10.attention.self.value.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.10.attention.output.dense.weight from model.bert.encoder.layer.10.attention.output.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.10.attention.output.dense.bias from model.bert.encoder.layer.10.attention.output.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.10.attention.output.LayerNorm.weight from model.bert.encoder.layer.10.attention.output.LayerNorm.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.10.attention.output.LayerNorm.bias from model.bert.encoder.layer.10.attention.output.LayerNorm.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.10.intermediate.dense.weight from model.bert.encoder.layer.10.intermediate.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.10.intermediate.dense.bias from model.bert.encoder.layer.10.intermediate.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.10.output.dense.weight from model.bert.encoder.layer.10.output.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.10.output.dense.bias from model.bert.encoder.layer.10.output.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.10.output.LayerNorm.weight from model.bert.encoder.layer.10.output.LayerNorm.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.10.output.LayerNorm.bias from model.bert.encoder.layer.10.output.LayerNorm.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.11.attention.self.query.weight from model.bert.encoder.layer.11.attention.self.query.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.11.attention.self.query.bias from model.bert.encoder.layer.11.attention.self.query.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.11.attention.self.key.weight from model.bert.encoder.layer.11.attention.self.key.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.11.attention.self.key.bias from model.bert.encoder.layer.11.attention.self.key.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.11.attention.self.value.weight from model.bert.encoder.layer.11.attention.self.value.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.11.attention.self.value.bias from model.bert.encoder.layer.11.attention.self.value.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.11.attention.output.dense.weight from model.bert.encoder.layer.11.attention.output.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.11.attention.output.dense.bias from model.bert.encoder.layer.11.attention.output.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.11.attention.output.LayerNorm.weight from model.bert.encoder.layer.11.attention.output.LayerNorm.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.11.attention.output.LayerNorm.bias from model.bert.encoder.layer.11.attention.output.LayerNorm.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.11.intermediate.dense.weight from model.bert.encoder.layer.11.intermediate.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.11.intermediate.dense.bias from model.bert.encoder.layer.11.intermediate.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.11.output.dense.weight from model.bert.encoder.layer.11.output.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.11.output.dense.bias from model.bert.encoder.layer.11.output.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.11.output.LayerNorm.weight from model.bert.encoder.layer.11.output.LayerNorm.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.encoder.layer.11.output.LayerNorm.bias from model.bert.encoder.layer.11.output.LayerNorm.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.pooler.dense.weight from model.bert.pooler.dense.weight
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Copying model.bert.pooler.dense.bias from model.bert.pooler.dense.bias
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Pretrained model loaded
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Checkpoint loaded.
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Current num updates: 0
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Current iteration: 0
+2022-08-31T17:17:41 | INFO | mmf.utils.checkpoint : Current epoch: 0
+2022-08-31T17:17:41 | INFO | mmf.trainers.mmf_trainer : ===== Model =====
+2022-08-31T17:17:41 | INFO | mmf.trainers.mmf_trainer : VisualBERT(
+  (model): VisualBERTForClassification(
+    (bert): VisualBERTBase(
+      (embeddings): BertVisioLinguisticEmbeddings(
+        (word_embeddings): Embedding(30522, 768, padding_idx=0)
+        (position_embeddings): Embedding(512, 768)
+        (token_type_embeddings): Embedding(2, 768)
+        (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (token_type_embeddings_visual): Embedding(2, 768)
+        (position_embeddings_visual): Embedding(512, 768)
+        (projection): Linear(in_features=2048, out_features=768, bias=True)
+      )
+      (encoder): BertEncoderJit(
+        (layer): ModuleList(
+          (0): BertLayerJit(
+            (attention): BertAttentionJit(
+              (self): BertSelfAttentionJit(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (1): BertLayerJit(
+            (attention): BertAttentionJit(
+              (self): BertSelfAttentionJit(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (2): BertLayerJit(
+            (attention): BertAttentionJit(
+              (self): BertSelfAttentionJit(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (3): BertLayerJit(
+            (attention): BertAttentionJit(
+              (self): BertSelfAttentionJit(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (4): BertLayerJit(
+            (attention): BertAttentionJit(
+              (self): BertSelfAttentionJit(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (5): BertLayerJit(
+            (attention): BertAttentionJit(
+              (self): BertSelfAttentionJit(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (6): BertLayerJit(
+            (attention): BertAttentionJit(
+              (self): BertSelfAttentionJit(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (7): BertLayerJit(
+            (attention): BertAttentionJit(
+              (self): BertSelfAttentionJit(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (8): BertLayerJit(
+            (attention): BertAttentionJit(
+              (self): BertSelfAttentionJit(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (9): BertLayerJit(
+            (attention): BertAttentionJit(
+              (self): BertSelfAttentionJit(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (10): BertLayerJit(
+            (attention): BertAttentionJit(
+              (self): BertSelfAttentionJit(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (11): BertLayerJit(
+            (attention): BertAttentionJit(
+              (self): BertSelfAttentionJit(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): BertSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): BertIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): BertOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+        )
+      )
+      (pooler): BertPooler(
+        (dense): Linear(in_features=768, out_features=768, bias=True)
+        (activation): Tanh()
+      )
+    )
+    (dropout): Dropout(p=0.1, inplace=False)
+    (classifier): Sequential(
+      (0): BertPredictionHeadTransform(
+        (dense): Linear(in_features=768, out_features=768, bias=True)
+        (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      )
+      (1): Linear(in_features=768, out_features=6, bias=True)
+    )
+  )
+  (losses): Losses(
+    (losses): ModuleList(
+      (0): MMFLoss(
+        (loss_criterion): CrossEntropyLoss(
+          (loss_fn): CrossEntropyLoss()
+        )
+      )
+    )
+  )
+)
+2022-08-31T17:17:41 | INFO | mmf.utils.general : Total Parameters: 112047366. Trained Parameters: 112047366
+2022-08-31T17:17:41 | INFO | mmf.trainers.core.training_loop : Starting training...
+2022-08-31T17:18:23 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-08-31T17:18:23 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:18:23 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:18:34 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-08-31T17:18:44 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:18:44 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:19:01 | INFO | mmf.trainers.callbacks.logistics : progress: 50/1000, val/hateful_memes/cross_entropy: 1.4966, val/total_loss: 1.4966, val/hateful_memes/accuracy: 0.4121, val/hateful_memes/binary_f1: 0.0000, val/hateful_memes/roc_auc: 0.5534, num_updates: 50, epoch: 1, iterations: 50, max_updates: 1000, val_time: 26s 882ms, best_update: 50, best_iteration: 50, best_val/hateful_memes/roc_auc: 0.553436
+2022-08-31T17:19:41 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-08-31T17:19:41 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:19:41 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:19:52 | INFO | mmf.trainers.callbacks.logistics : progress: 100/1000, train/hateful_memes/cross_entropy: 0.8807, train/hateful_memes/cross_entropy/avg: 0.8807, train/total_loss: 0.8807, train/total_loss/avg: 0.8807, max mem: 9201.0, experiment: run, epoch: 1, num_updates: 100, iterations: 100, max_updates: 1000, lr: 0.00001, ups: 1.96, time: 51s 116ms, time_since_start: 02m 14s 671ms, eta: 07m 40s 046ms
+2022-08-31T17:19:52 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-08-31T17:20:02 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:20:02 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:20:19 | INFO | mmf.trainers.callbacks.logistics : progress: 100/1000, val/hateful_memes/cross_entropy: 1.4409, val/total_loss: 1.4409, val/hateful_memes/accuracy: 0.4190, val/hateful_memes/binary_f1: 0.0391, val/hateful_memes/roc_auc: 0.6043, num_updates: 100, epoch: 1, iterations: 100, max_updates: 1000, val_time: 26s 597ms, best_update: 100, best_iteration: 100, best_val/hateful_memes/roc_auc: 0.604300
+2022-08-31T17:20:58 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-08-31T17:20:58 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:20:58 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:21:09 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-08-31T17:21:19 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:21:19 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:21:36 | INFO | mmf.trainers.callbacks.logistics : progress: 150/1000, val/hateful_memes/cross_entropy: 1.3819, val/total_loss: 1.3819, val/hateful_memes/accuracy: 0.4753, val/hateful_memes/binary_f1: 0.2919, val/hateful_memes/roc_auc: 0.6175, num_updates: 150, epoch: 1, iterations: 150, max_updates: 1000, val_time: 26s 365ms, best_update: 150, best_iteration: 150, best_val/hateful_memes/roc_auc: 0.617513
+2022-08-31T17:22:15 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-08-31T17:22:15 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:22:15 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:22:27 | INFO | mmf.trainers.callbacks.logistics : progress: 200/1000, train/hateful_memes/cross_entropy: 0.8594, train/hateful_memes/cross_entropy/avg: 0.8700, train/total_loss: 0.8594, train/total_loss/avg: 0.8700, max mem: 9201.0, experiment: run, epoch: 1, num_updates: 200, iterations: 200, max_updates: 1000, lr: 0.00002, ups: 2.00, time: 50s 779ms, time_since_start: 04m 49s 262ms, eta: 06m 46s 235ms
+2022-08-31T17:22:27 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-08-31T17:22:36 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:22:36 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:22:53 | INFO | mmf.trainers.callbacks.logistics : progress: 200/1000, val/hateful_memes/cross_entropy: 1.2137, val/total_loss: 1.2137, val/hateful_memes/accuracy: 0.5714, val/hateful_memes/binary_f1: 0.5830, val/hateful_memes/roc_auc: 0.7434, num_updates: 200, epoch: 1, iterations: 200, max_updates: 1000, val_time: 26s 419ms, best_update: 200, best_iteration: 200, best_val/hateful_memes/roc_auc: 0.743403
+2022-08-31T17:23:34 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-08-31T17:23:34 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:23:34 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:23:45 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-08-31T17:23:55 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:23:55 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:24:12 | INFO | mmf.trainers.callbacks.logistics : progress: 250/1000, val/hateful_memes/cross_entropy: 1.1215, val/total_loss: 1.1215, val/hateful_memes/accuracy: 0.6099, val/hateful_memes/binary_f1: 0.6879, val/hateful_memes/roc_auc: 0.7953, num_updates: 250, epoch: 2, iterations: 250, max_updates: 1000, val_time: 26s 720ms, best_update: 250, best_iteration: 250, best_val/hateful_memes/roc_auc: 0.795271
+2022-08-31T17:24:52 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-08-31T17:24:52 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:24:52 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:25:03 | INFO | mmf.trainers.callbacks.logistics : progress: 300/1000, train/hateful_memes/cross_entropy: 0.8807, train/hateful_memes/cross_entropy/avg: 0.9274, train/total_loss: 0.8807, train/total_loss/avg: 0.9274, max mem: 9201.0, experiment: run, epoch: 2, num_updates: 300, iterations: 300, max_updates: 1000, lr: 0.00003, ups: 1.96, time: 51s 233ms, time_since_start: 07m 26s 179ms, eta: 05m 58s 631ms
+2022-08-31T17:25:03 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-08-31T17:25:14 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:25:14 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:25:31 | INFO | mmf.trainers.callbacks.logistics : progress: 300/1000, val/hateful_memes/cross_entropy: 1.2683, val/total_loss: 1.2683, val/hateful_memes/accuracy: 0.5412, val/hateful_memes/binary_f1: 0.4907, val/hateful_memes/roc_auc: 0.8100, num_updates: 300, epoch: 2, iterations: 300, max_updates: 1000, val_time: 27s 330ms, best_update: 300, best_iteration: 300, best_val/hateful_memes/roc_auc: 0.809965
+2022-08-31T17:26:10 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-08-31T17:26:10 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:26:10 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:26:21 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-08-31T17:26:31 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:26:31 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:26:48 | INFO | mmf.trainers.callbacks.logistics : progress: 350/1000, val/hateful_memes/cross_entropy: 1.0697, val/total_loss: 1.0697, val/hateful_memes/accuracy: 0.5948, val/hateful_memes/binary_f1: 0.6135, val/hateful_memes/roc_auc: 0.8375, num_updates: 350, epoch: 2, iterations: 350, max_updates: 1000, val_time: 26s 284ms, best_update: 350, best_iteration: 350, best_val/hateful_memes/roc_auc: 0.837498
+2022-08-31T17:27:28 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-08-31T17:27:28 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:27:28 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:27:38 | INFO | mmf.trainers.callbacks.logistics : progress: 400/1000, train/hateful_memes/cross_entropy: 0.8594, train/hateful_memes/cross_entropy/avg: 0.8089, train/total_loss: 0.8594, train/total_loss/avg: 0.8089, max mem: 9201.0, experiment: run, epoch: 2, num_updates: 400, iterations: 400, max_updates: 1000, lr: 0.00004, ups: 2.00, time: 50s 688ms, time_since_start: 10m 01s 154ms, eta: 05m 04s 133ms
+2022-08-31T17:27:38 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-08-31T17:27:49 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:27:49 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:28:05 | INFO | mmf.trainers.callbacks.logistics : progress: 400/1000, val/hateful_memes/cross_entropy: 1.0353, val/total_loss: 1.0353, val/hateful_memes/accuracy: 0.6181, val/hateful_memes/binary_f1: 0.6286, val/hateful_memes/roc_auc: 0.8570, num_updates: 400, epoch: 2, iterations: 400, max_updates: 1000, val_time: 26s 517ms, best_update: 400, best_iteration: 400, best_val/hateful_memes/roc_auc: 0.856998
+2022-08-31T17:28:45 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-08-31T17:28:45 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:28:45 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:28:56 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-08-31T17:29:06 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:29:06 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:29:23 | INFO | mmf.trainers.callbacks.logistics : progress: 450/1000, val/hateful_memes/cross_entropy: 1.0273, val/total_loss: 1.0273, val/hateful_memes/accuracy: 0.5948, val/hateful_memes/binary_f1: 0.6260, val/hateful_memes/roc_auc: 0.8630, num_updates: 450, epoch: 2, iterations: 450, max_updates: 1000, val_time: 26s 839ms, best_update: 450, best_iteration: 450, best_val/hateful_memes/roc_auc: 0.863016
+2022-08-31T17:30:04 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-08-31T17:30:04 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:30:04 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:30:15 | INFO | mmf.trainers.callbacks.logistics : progress: 500/1000, train/hateful_memes/cross_entropy: 0.8807, train/hateful_memes/cross_entropy/avg: 0.8274, train/total_loss: 0.8807, train/total_loss/avg: 0.8274, max mem: 9201.0, experiment: run, epoch: 3, num_updates: 500, iterations: 500, max_updates: 1000, lr: 0.00005, ups: 1.92, time: 52s 499ms, time_since_start: 12m 37s 794ms, eta: 04m 22s 496ms
+2022-08-31T17:30:15 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-08-31T17:30:25 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:30:25 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:30:36 | INFO | mmf.trainers.callbacks.logistics : progress: 500/1000, val/hateful_memes/cross_entropy: 1.3697, val/total_loss: 1.3697, val/hateful_memes/accuracy: 0.5701, val/hateful_memes/binary_f1: 0.4802, val/hateful_memes/roc_auc: 0.8524, num_updates: 500, epoch: 3, iterations: 500, max_updates: 1000, val_time: 21s 216ms, best_update: 450, best_iteration: 450, best_val/hateful_memes/roc_auc: 0.863016
+2022-08-31T17:31:16 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-08-31T17:31:16 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:31:16 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:31:27 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-08-31T17:31:37 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:31:37 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:31:54 | INFO | mmf.trainers.callbacks.logistics : progress: 550/1000, val/hateful_memes/cross_entropy: 1.0238, val/total_loss: 1.0238, val/hateful_memes/accuracy: 0.6305, val/hateful_memes/binary_f1: 0.6392, val/hateful_memes/roc_auc: 0.8653, num_updates: 550, epoch: 3, iterations: 550, max_updates: 1000, val_time: 26s 381ms, best_update: 550, best_iteration: 550, best_val/hateful_memes/roc_auc: 0.865281
+2022-08-31T17:32:33 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-08-31T17:32:33 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:32:33 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:32:44 | INFO | mmf.trainers.callbacks.logistics : progress: 600/1000, train/hateful_memes/cross_entropy: 0.8594, train/hateful_memes/cross_entropy/avg: 0.7557, train/total_loss: 0.8594, train/total_loss/avg: 0.7557, max mem: 9201.0, experiment: run, epoch: 3, num_updates: 600, iterations: 600, max_updates: 1000, lr: 0.00004, ups: 2.00, time: 50s 872ms, time_since_start: 15m 07s 189ms, eta: 03m 23s 488ms
+2022-08-31T17:32:44 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-08-31T17:32:55 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:32:55 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:33:05 | INFO | mmf.trainers.callbacks.logistics : progress: 600/1000, val/hateful_memes/cross_entropy: 1.0715, val/total_loss: 1.0715, val/hateful_memes/accuracy: 0.6223, val/hateful_memes/binary_f1: 0.6198, val/hateful_memes/roc_auc: 0.8612, num_updates: 600, epoch: 3, iterations: 600, max_updates: 1000, val_time: 20s 938ms, best_update: 550, best_iteration: 550, best_val/hateful_memes/roc_auc: 0.865281
+2022-08-31T17:33:45 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-08-31T17:33:45 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:33:45 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:33:56 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-08-31T17:34:06 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:34:06 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:34:17 | INFO | mmf.trainers.callbacks.logistics : progress: 650/1000, val/hateful_memes/cross_entropy: 0.9908, val/total_loss: 0.9908, val/hateful_memes/accuracy: 0.6566, val/hateful_memes/binary_f1: 0.6898, val/hateful_memes/roc_auc: 0.8653, num_updates: 650, epoch: 3, iterations: 650, max_updates: 1000, val_time: 21s 281ms, best_update: 550, best_iteration: 550, best_val/hateful_memes/roc_auc: 0.865281
+2022-08-31T17:34:57 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-08-31T17:34:57 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:34:57 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:35:08 | INFO | mmf.trainers.callbacks.logistics : progress: 700/1000, train/hateful_memes/cross_entropy: 0.8594, train/hateful_memes/cross_entropy/avg: 0.7334, train/total_loss: 0.8594, train/total_loss/avg: 0.7334, max mem: 9201.0, experiment: run, epoch: 3, num_updates: 700, iterations: 700, max_updates: 1000, lr: 0.00003, ups: 2.00, time: 50s 665ms, time_since_start: 17m 30s 842ms, eta: 02m 31s 997ms
+2022-08-31T17:35:08 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-08-31T17:35:18 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:35:18 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:35:29 | INFO | mmf.trainers.callbacks.logistics : progress: 700/1000, val/hateful_memes/cross_entropy: 1.0266, val/total_loss: 1.0266, val/hateful_memes/accuracy: 0.6332, val/hateful_memes/binary_f1: 0.6214, val/hateful_memes/roc_auc: 0.8611, num_updates: 700, epoch: 3, iterations: 700, max_updates: 1000, val_time: 21s 082ms, best_update: 550, best_iteration: 550, best_val/hateful_memes/roc_auc: 0.865281
+2022-08-31T17:36:10 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-08-31T17:36:10 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:36:10 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:36:22 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-08-31T17:36:31 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:36:31 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:36:43 | INFO | mmf.trainers.callbacks.logistics : progress: 750/1000, val/hateful_memes/cross_entropy: 1.1230, val/total_loss: 1.1230, val/hateful_memes/accuracy: 0.6593, val/hateful_memes/binary_f1: 0.6819, val/hateful_memes/roc_auc: 0.8588, num_updates: 750, epoch: 4, iterations: 750, max_updates: 1000, val_time: 20s 880ms, best_update: 550, best_iteration: 550, best_val/hateful_memes/roc_auc: 0.865281
+2022-08-31T17:37:23 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-08-31T17:37:23 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:37:23 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:37:33 | INFO | mmf.trainers.callbacks.logistics : progress: 800/1000, train/hateful_memes/cross_entropy: 0.5997, train/hateful_memes/cross_entropy/avg: 0.6824, train/total_loss: 0.5997, train/total_loss/avg: 0.6824, max mem: 9201.0, experiment: run, epoch: 4, num_updates: 800, iterations: 800, max_updates: 1000, lr: 0.00002, ups: 2.00, time: 50s 827ms, time_since_start: 19m 56s 083ms, eta: 01m 41s 655ms
+2022-08-31T17:37:33 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-08-31T17:37:44 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:37:44 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:37:55 | INFO | mmf.trainers.callbacks.logistics : progress: 800/1000, val/hateful_memes/cross_entropy: 1.3227, val/total_loss: 1.3227, val/hateful_memes/accuracy: 0.6374, val/hateful_memes/binary_f1: 0.6535, val/hateful_memes/roc_auc: 0.8602, num_updates: 800, epoch: 4, iterations: 800, max_updates: 1000, val_time: 21s 729ms, best_update: 550, best_iteration: 550, best_val/hateful_memes/roc_auc: 0.865281
+2022-08-31T17:38:35 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-08-31T17:38:35 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:38:35 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:38:46 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-08-31T17:38:56 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:38:56 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:39:12 | INFO | mmf.trainers.callbacks.logistics : progress: 850/1000, val/hateful_memes/cross_entropy: 1.1767, val/total_loss: 1.1767, val/hateful_memes/accuracy: 0.6538, val/hateful_memes/binary_f1: 0.6574, val/hateful_memes/roc_auc: 0.8672, num_updates: 850, epoch: 4, iterations: 850, max_updates: 1000, val_time: 26s 610ms, best_update: 850, best_iteration: 850, best_val/hateful_memes/roc_auc: 0.867189
+2022-08-31T17:39:53 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-08-31T17:39:53 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:39:53 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:40:04 | INFO | mmf.trainers.callbacks.logistics : progress: 900/1000, train/hateful_memes/cross_entropy: 0.5997, train/hateful_memes/cross_entropy/avg: 0.6583, train/total_loss: 0.5997, train/total_loss/avg: 0.6583, max mem: 9201.0, experiment: run, epoch: 4, num_updates: 900, iterations: 900, max_updates: 1000, lr: 0.00001, ups: 1.96, time: 51s 791ms, time_since_start: 22m 26s 808ms, eta: 51s 791ms
+2022-08-31T17:40:04 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-08-31T17:40:14 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:40:14 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:40:25 | INFO | mmf.trainers.callbacks.logistics : progress: 900/1000, val/hateful_memes/cross_entropy: 1.1395, val/total_loss: 1.1395, val/hateful_memes/accuracy: 0.6593, val/hateful_memes/binary_f1: 0.6744, val/hateful_memes/roc_auc: 0.8594, num_updates: 900, epoch: 4, iterations: 900, max_updates: 1000, val_time: 21s 305ms, best_update: 850, best_iteration: 850, best_val/hateful_memes/roc_auc: 0.867189
+2022-08-31T17:41:07 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-08-31T17:41:07 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:41:07 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:41:17 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-08-31T17:41:27 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:41:27 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:41:38 | INFO | mmf.trainers.callbacks.logistics : progress: 950/1000, val/hateful_memes/cross_entropy: 1.3220, val/total_loss: 1.3220, val/hateful_memes/accuracy: 0.6346, val/hateful_memes/binary_f1: 0.6164, val/hateful_memes/roc_auc: 0.8586, num_updates: 950, epoch: 5, iterations: 950, max_updates: 1000, val_time: 21s 046ms, best_update: 850, best_iteration: 850, best_val/hateful_memes/roc_auc: 0.867189
+2022-08-31T17:42:18 | INFO | mmf.trainers.callbacks.checkpoint : Checkpoint time. Saving a checkpoint.
+2022-08-31T17:42:18 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:42:18 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:42:29 | INFO | mmf.trainers.callbacks.logistics : progress: 1000/1000, train/hateful_memes/cross_entropy: 0.4660, train/hateful_memes/cross_entropy/avg: 0.6024, train/total_loss: 0.4660, train/total_loss/avg: 0.6024, max mem: 9201.0, experiment: run, epoch: 5, num_updates: 1000, iterations: 1000, max_updates: 1000, lr: 0., ups: 2.00, time: 50s 761ms, time_since_start: 24m 51s 879ms, eta: 0ms
+2022-08-31T17:42:29 | INFO | mmf.trainers.core.training_loop : Evaluation time. Running on full validation set...
+2022-08-31T17:42:39 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:42:39 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:200: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:42:50 | INFO | mmf.trainers.callbacks.logistics : progress: 1000/1000, val/hateful_memes/cross_entropy: 1.2781, val/total_loss: 1.2781, val/hateful_memes/accuracy: 0.6497, val/hateful_memes/binary_f1: 0.6534, val/hateful_memes/roc_auc: 0.8598, num_updates: 1000, epoch: 5, iterations: 1000, max_updates: 1000, val_time: 21s 295ms, best_update: 850, best_iteration: 850, best_val/hateful_memes/roc_auc: 0.867189
+2022-08-31T17:42:51 | INFO | mmf.trainers.core.training_loop : Stepping into final validation check
+2022-08-31T17:42:51 | INFO | mmf.utils.checkpoint : Restoring checkpoint
+2022-08-31T17:42:51 | INFO | mmf.utils.checkpoint : Loading checkpoint
+2022-08-31T17:42:58 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:218: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:42:58 | WARNING | py.warnings : /usr/local/lib/python3.7/dist-packages/torch/optim/lr_scheduler.py:218: UserWarning: Please also save or load the state of the optimzer when saving or loading the scheduler.
+  warnings.warn(SAVE_STATE_WARNING, UserWarning)
+
+2022-08-31T17:42:58 | INFO | mmf.utils.checkpoint : Checkpoint loaded.
+2022-08-31T17:42:58 | INFO | mmf.utils.checkpoint : Current num updates: 850
+2022-08-31T17:42:58 | INFO | mmf.utils.checkpoint : Current iteration: 850
+2022-08-31T17:42:58 | INFO | mmf.utils.checkpoint : Current epoch: 4
+2022-08-31T17:43:00 | INFO | mmf.trainers.mmf_trainer : Starting inference on val set
+2022-08-31T17:43:10 | INFO | mmf.trainers.callbacks.logistics : progress: 850/1000, val/hateful_memes/cross_entropy: 1.1767, val/total_loss: 1.1767, val/hateful_memes/accuracy: 0.6538, val/hateful_memes/binary_f1: 0.6574, val/hateful_memes/roc_auc: 0.8672
+2022-08-31T17:43:10 | INFO | mmf.trainers.callbacks.logistics : Finished run in 25m 32s 393ms
