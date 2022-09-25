@@ -31,14 +31,14 @@ To train and make predictions run all cells. The models will be saved in "hate_t
  
  **8. 8models_type:** Folder with prediction results in csv format and log files for: Unimodal Models for the “Hate Speech Type” Unit.
  
- **9. Multiclass Data Preprocessing:** The script where newly labeled multiclass "Hatefull Memes" Dataset have been customzied to fit the multiclass framework. The main contents of this scipts are: 
+ **9. Multiclass Data Preprocessing:**  The main contents of this scipt are: 
  - function to convert csv file to jsonl file,
- - function to combine the classes (for more details see chapter of the thesis 3.2.),
- - Dataset split in training, evaluation and test sets.
+ - function to combine the classes (for more details see chapter 3.2 of the thesis),
+ - Dataset-Split in training, evaluation and test sets.
  
- **10. Multiclass Evaluation Metrics:** The scipt where the Confusion Matrices and F1-Score have been implemented and computed to evalaute the multiclass classifier for both units
+ **10. Multiclass Evaluation Metrics:** This scipt features the implementation of Confusion Matrices and F1-Score and computations to evalaute the multiclass classifier for both units.
 
- **11. Unimodal Evalaution Metrics:** The script where the Confusion Matrices and F1-Score have been implemented and computed to evalaute the unimodal models 
+ **11. Unimodal Evalaution Metrics:** This scipt features the implementation of Confusion Matrices and F1-Score and computations to evalaute the unimodal models.
  
- **12. Unimodals Datasets Preprocessing:** The script where multiclass labeled dataset is splitted to fit the definition of the binary problems (for more details see chapter of the thesis 3.4.)
+ **12. Unimodals Datasets Preprocessing:** This is the script where the multiclass labeled dataset is split to fit the definition of the binary problems (see chapter of the thesis 3.4.)
  
